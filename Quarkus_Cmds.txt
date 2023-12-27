@@ -1,0 +1,42 @@
+To Run Quarkus project:
+==========================
+run:
+-----
+mvn quarkus:dev
+
+To delete and regenerate target folder:
+---------------------------------------
+mvn clean quarkus:dev
+
+To get dependencies/extension list quarkus supports
+-----------------------
+mvn quarkus:list-extensions
+
+To add dependencies:
+-----------------------
+mvn quarkus:add-extension -Dextensions="extension name"
+
+Swagger in Quarkus:
+--------------------
+Add swagger dependency in pom.xml
+visit localhost:8080/q/swagger-ui/
+
+->if we want to change the url of swagger then in application.properties file define
+quarkus.swagger-ui.path = abc (/q is mandatory)
+
+-> If we want to disable swagger then in application.properties file define
+quarkus.swagger-ui-always-include=false
+
+
+To call other downstream:
+--------------------------
+Add RestEasy Classic EndPoint in pom.xml
+
+Create an interface with @Path and @RegisterRestClient(baseUri = "https://api.tvmaze.com")
+Create methods for accessing those endpoints 
+	for example :    
+ //https://api.tvmaze.com/shows/169
+    @GET
+    @Path("shows/{id}")
+    TvSeries getTvSeriesById(@PathParam("id") int id);
+
