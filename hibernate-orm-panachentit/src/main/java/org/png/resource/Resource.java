@@ -9,6 +9,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
+import org.jboss.logging.Logger;
 import org.png.dto.projection.SimCardProjection;
 import org.png.entity.SimCard;
 import org.png.repository.SimCardRepository;
@@ -19,6 +20,7 @@ import java.util.Optional;
 @Path("/")
 public class Resource {
 
+    public static final Logger logger = Logger.getLogger(Resource.class);
     @Inject
     private SimCardRepository simCardRepository;
 
@@ -27,6 +29,7 @@ public class Resource {
     @Transactional
     @Produces(MediaType.APPLICATION_JSON)
     public Response saveSimCard(@RequestBody SimCard simCard) {
+        logger.info("Inside saveSimCard :: saveSimCard()");
         simCardRepository.persist(simCard);
         if (simCardRepository.isPersistent(simCard)) {
             return Response.ok(new String("Saved Successfully !!")).build();

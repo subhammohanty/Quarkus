@@ -1,0 +1,24 @@
+Quarkus Flow According To PlayList:
+-----------------------------------
+1- Creating Quarkus Application
+2- Add New Dependency/Extension
+3- First RESTFul WebService in Quarkus using GET/PUT/POST/DELETE (Use @Path/@Consumer/@Producer,etc)
+4- Swagger -Ui in Quarkus
+5- Enable CORS filter in Quarkus
+6- Microprofile REST Client Call
+7- Microprofile Fault Tolerance (@Retry,@Timeout,@Fallback)
+8- Microprofile Fault Tolerance(@Circuit Breaker)
+9- Hibernate ORM Mapping Using Panache Repository
+10- One To One Mapping : (specific project)
+11- One To Many Mapping : (specific project)
+12- Many To Many Mapping : (specific project)
+13- Important methods of Panache Repository (hibernate-orm-panachentity)
+14- Testing with RestAssured and Junit Mockito
+15- Microprofile Configuration to consume from application.properties file
+16- How to Use YAML configuration
+17- Custom Profile in Quarkus
+18- Logging in Quarkus (info debug,warnings, error) also saving logs to file
+19- Exception Handling (quarkus-application)
+20- Initialization and Termination in Quarkus (quarkus-application - inside Main Package)
+21- Microprofile Health Monitoring in Quarkus (quarkus-application -Health)
+22- Microprofile Metrices Like which one is taking more load (quarkus-application -Health)

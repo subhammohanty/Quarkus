@@ -39,4 +39,78 @@ Create methods for accessing those endpoints
     @GET
     @Path("shows/{id}")
     TvSeries getTvSeriesById(@PathParam("id") int id);
+	
+	
+	
+To Use Application.yaml file in Quarkus:
+-------------------------------------------
+-> Add quarkus-config-yaml dependency in your pom.xml
 
+Profiling:(1st Way)
+---------
+define the properties like below
+%local.quarkus.http.port=9090 - This indicates local profile
+
+To run in local profile, we should use below command
+mvn -Dquarkus-profile=local compile quarkus:dev
+
+Profiling:(2st Way)
+-------------------
+Create a new file with profile (application-uat.properties)
+
+add all those properties as it is 
+Then run below command
+mvn -Dquarkus-profile=uat compile quarkus:dev
+-----------------------------
+To Enable Debug Logs:
+-----------------------
+quarkus.log.level=DEBUG
+
+To Enable our Debug Logs only (Package wise):
+------------------
+quarkus.log.level=INFO
+quarkus.log.category."com.hprtech".level=DEBUG
+
+To Disable logs from Console:
+-----------------------------
+quarkus.log.console..enable=false
+
+To Disable Quarkus Banner:
+----------------------------
+quarkus.banner.enabled=false
+
+To Save logs in file:(To Save DEBUG logs in a file in mentioned location)
+-------------------
+quarkus.log.file.enable=true
+quarkus.log.file.level=DEBUG
+quarkus.log.file.path=log/quarkus.log
+
+quarkus.log.file.format=%d(HH:mm:ss) %-5p [%c{2.}] (%t) %s%e%n
+
+**Note: 5 backup log files will be created  
+
+----------------------
+quarkus.http.access-log.enabled=true (To log all the HTTP Request)
+
+To Print log in JSON format:
+----------------------------
+Add quarkus-logging-json dependency to your pom.xml
+
+Initialization of Quarkus Application:
+--------------------------------
+-> @QuarkusMain : from where we will start our execution
+> 
+================================
+To check Health:
+---------------
+-> Add dependency of quarkus-smallrye-health
+-> Create 2 class of Liveness and Readiness and annotate with @liveness and @Readiness and implement from HealthCheck
+-> Override call method and write logic to check connection
+-> Use http://localhost:8080/q/health to check the status and http://localhost:8080/q/health-ui to check in UI
+
+
+To Check Load:
+---------------
+-> Add dependency of quarkus-smallrye-metrics
+-> Annotate Method with @Counted, @Timed, @Metered and a new method @Gauge
+-> Visit http://localhost:8080/q/metrics/application for all the details

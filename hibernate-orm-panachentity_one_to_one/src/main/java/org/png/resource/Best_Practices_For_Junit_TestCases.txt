@@ -1,0 +1,175 @@
+What is unit testing?
+===========================
+Unit testing is a software development process in which the smallest testable parts of an application, called units, 
+are individually scrutinized for proper operation. Software developers complete unit tests during the development process. 
+The main objective of unit testing is to isolate written code to test and determine if it works as intended.
+
+Unit testing is an important step in the development process. If done correctly, 
+unit tests can detect early flaws in code which may be more difficult to find in later testing stages.
+
+How unit tests work
+=======================
+A unit test comprises three stages: planning, writing test cases and performing the unit test itself. 
+In the first step, developers professionals prepare and review the unit test. 
+In the next step, they write test cases and scripts. In the third step the code is tested.
+
+Best Practices:
+==================
+Source Code :
+--------------
+It’s a good idea to keep the test classes separate from the main source code. 
+So, they are developed, executed and maintained separately from the production code.
+
+Also, it avoids any possibility of running test code in the production environment.
+
+We can follow the steps of the build tools such as Maven and Gradle that look for src/main/test directory for test implementations.
+
+Package Naming Convention:
+-----------------------------
+We should create a similar package structure in the src/main/test directory for test classes, 
+this way improving the readability and maintainability of the test code.
+
+Simply put, the package of the test class should match the package of the source class whose unit of source code it’ll test.
+For instance, if our Circle class exists in the com.capg.math package, the CircleTest class should also exist in the 
+com.capg.math package under the src/main/test directory structure.
+
+Test Case Naming Convention:
+----------------------------------
+The test names should be insightful, and users should understand the behavior and expectation of the test by just glancing at the name itself.
+For example the name of our unit test was testCalculateArea, which is vague on any meaningful information about the test scenario and expectation.
+Therefore, we should name a test with the action and expectation such as testCalculateAreaWithGeneralDoubleValueRadiusThatReturnsAreaInDouble, 
+testCalculateAreaWithLargeDoubleValueRadiusThatReturnsAreaAsInfinity.
+
+for example:
+public class CircleTest {
+
+    //...
+
+    @Test
+    public void givenRadius_whenCalculateArea_thenReturnArea() {
+        //...
+    }
+	
+Expected vs Actual:
+--------------------
+A test case should have an assertion between expected and actual values.
+It’s suggested to prefix the variable names with the actual and expected keyword to improve the readability of the test code.\
+for example:
+@Test 
+public void givenRadius_whenCalculateArea_thenReturnArea() {
+    double actualArea = Circle.calculateArea(1d);
+    double expectedArea = 3.141592653589793;
+    Assert.assertEquals(expectedArea, actualArea); 
+}
+
+Prefer Simple Test Case:
+-----------------------------
+In the previous test case, we can see that the expected value was hard-coded. 
+This is done to avoid rewriting or reusing actual code implementation in the test case to get the expected value.
+In the above assertion, we’re calculating both expected and actual values using similar logic, resulting in similar results forever. 
+So, our test case won’t have any value added to the unit testing of code.
+
+Therefore, we should create a simple test case that asserts hard-coded expected value against the actual one.
+
+Although it’s sometimes required to write the logic in the test case, we shouldn’t overdo it. 
+Also, as commonly seen, we should never implement production logic in a test case to pass the assertions.
+
+Appropriate Assertions:
+---------------------------
+Always use proper assertions to verify the expected vs. actual results. We should use various methods available in the Assert class of JUnit or similar frameworks such as AssertJ.
+
+For instance, we’ve already used the Assert.assertEquals method for value assertion. 
+Similarly, we can use assertNotEquals to check if the expected and actual values are not equal.
+
+Other methods such as assertNotNull, assertTrue and assertNotSame are beneficial in distinct assertions.
+
+Specific Unit Tests:
+--------------------
+Instead of adding multiple assertions to the same unit test, we should create separate test cases.
+Of course, it’s sometimes tempting to verify multiple scenarios in the same test, but it’s a good idea to keep them separate. Then, in the case of test failures, it’ll be easier to determine which specific scenario failed and, likewise, simpler to fix the code.
+
+Therefore, always write a unit test to test a single specific scenario.
+
+A unit test won’t get overly complicated to understand. Moreover, it’ll be easier to debug and maintain unit tests later.
+
+Test Production Scenarios:
+---------------------------
+Unit testing is more rewarding when we write tests considering real scenarios in mind.
+
+Principally, it helps to make unit tests more relatable. Also, it proves essential in understanding the behavior of the code in certain production cases.
+
+Mock External Services:
+---------------------
+Although unit tests concentrate on specific and smaller pieces of code, there is a chance that the code is dependent on external services for some logic.
+
+Therefore, we should mock the external services and merely test the logic and execution of our code for varying scenarios.
+
+We can use various frameworks such as Mockito, EasyMock and JMockit for mocking external services.
+
+Avoid Code Redundancy:
+------------------------
+Create more and more helper functions to generate the commonly used objects and mock the data or external services for similar unit tests.
+
+As with other recommendations, this enhances the readability and maintainability of the test code.
+
+Annotations:
+------------------
+Often, testing frameworks provide annotations for various purposes, for example, performing setup, executing code before and tearing down after running a test.
+
+Various annotations such as JUnit’s @Before, @BeforeClass and @After and from other test frameworks such as TestNG are at our disposal.
+
+We should leverage annotations to prepare the system for tests by creating data, 
+arranging objects and dropping all of it after every test to keep test cases isolated from each other.
+
+For example, while writing Quarkus Tests we shoul always annotate the class with @QuarkusTest to make Quarkus know that this is a test class
+
+80% Test Coverage:
+---------------------
+More test coverage for the source code is always beneficial. However, it’s not the only goal to achieve. We should make a well-informed decision and choose a better trade-off that works for our implementation, deadlines and the team.
+
+As a rule of thumb, we should try to cover 80% of the code by unit tests.
+
+Additionally, we can use tools such as JaCoCo and Cobertura along with Maven or Gradle to generate code coverage reports.
+
+TDD Approach:
+-----------------
+Test-Driven Development (TDD) is the methodology where we create test cases before and in ongoing implementation. The approach couples with the process of designing and implementing the source code.
+
+The benefit includes testable production code from the start, robust implementation with easy refactorings and fewer regressions.
+
+Automation:
+----------------
+We can improve the reliability of the code by automating the execution of the entire test suite while creating new builds.
+
+Primarily, this helps to avoid unfortunate regressions in various release environments. It also ensures rapid 
+feedback before a broken code is released.
+
+Therefore, unit test execution should be part of CI-CD pipelines and alert the stakeholders in case of malfunctions.
+
+
+
+===============
+In Quarkus we can define number of annotations for different purposes like :
+1->@QuarkusTest: The @QuarkusTest annotation in Quarkus is used to indicate that a particular test class is a Quarkus test. 
+Quarkus tests are special types of tests designed to work seamlessly with the Quarkus framework, 
+allowing you to test your Quarkus applications in an isolated and controlled environment. 
+
+2->@Tag("integration")
+In Quarkus, the @Tag annotation is used to tag your test classes or test methods with custom metadata. 
+This can be helpful for categorizing tests and selectively running them based on their tags. 
+The @Tag annotation is part of the JUnit 5 framework, and Quarkus leverages it to provide additional functionality in the context of Quarkus tests.
+
+3->@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+This Annotation is used to specify the order of the test methods for execution
+
+4->@Order(1) : This specify that the test method with this annotation will be executed first
+
+5->@Inject: This annotation is used to inject the class which we want to test
+
+6->@InjectMock: To Mock the class whose object we will using in the targeted class
+7->@BeforeEach: Method annotated with this will be executed first during the startup only 
+8->@Test: This annotation is used to indicate the method as a test method.
+
+
+
+
