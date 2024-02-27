@@ -114,3 +114,11 @@ To Check Load:
 -> Add dependency of quarkus-smallrye-metrics
 -> Annotate Method with @Counted, @Timed, @Metered and a new method @Gauge
 -> Visit http://localhost:8080/q/metrics/application for all the details
+
+To Implement JWT:
+------------------
+-> Create 2 modules as jwt-token and courses.
+-> using git generate public and private key inside a new jwt folder
+-> Add jwt dependency in course modules
+-> Add jwt and jwt-build dependency in jwt-token module.
+-> add properties for both jwt-token and courses modules to run on diff port and to access private and public key.
