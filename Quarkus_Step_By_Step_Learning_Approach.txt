@@ -23,3 +23,4 @@ Quarkus Flow According To PlayList:
 21- Microprofile Health Monitoring in Quarkus (quarkus-application -Health)
 22- Microprofile Metrices Like which one is taking more load (quarkus-application -Health)
 23- Authentication and Authorization using JWT (quarkus-application - JWT)
+24- Authentication and Authorization using Keyklock (quarkus-application - Keyklock)

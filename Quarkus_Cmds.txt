@@ -122,3 +122,27 @@ To Implement JWT:
 -> Add jwt dependency in course modules
 -> Add jwt and jwt-build dependency in jwt-token module.
 -> add properties for both jwt-token and courses modules to run on diff port and to access private and public key.
+
+To implement Keycloak:
+-------------------------
+-> Download Keyklock and go inside bin folder
+-> execute command kc.bat start-dev
+-> create username and password as admin and admin
+-> open adminstrative console
+-> A Realm contains Client, Users and Roles.
+-> We can define roles on Realm level or Client Level
+-> Don't modify anything in realm master
+-> Create your own Realm (eg iit)
+-> Create Client Inside Realm
+-> Give Name and Id
+-> Give Base path 
+-> Create Role inside it
+-> Create Users From UI 
+-> Add Credentials and Set Password and Assign Roles
+-> Define Roles Allowed in the Resource class
+-> Add quarkus-oidc dependency and quarkus-keycloak-authorization in pom.xml
+-> Define Properties in application.properties
+-> In PostMan go to Authorization -> Oauth2.o , Give all the details and then copy the token.
+-> Select Bearer Token then paste the token and try to access the URL. It will work
+
+
