@@ -13,7 +13,7 @@ Quarkus Flow According To PlayList:
 11- One To Many Mapping : (specific project)
 12- Many To Many Mapping : (specific project)
 13- Important methods of Panache Repository (hibernate-orm-panachentity)
-14- Testing with RestAssured and Junit Mockito
+14- Testing with RestAssured and Junit Mockito ((testing-with-rest-assured))
 15- Microprofile Configuration to consume from application.properties file
 16- How to Use YAML configuration
 17- Custom Profile in Quarkus
@@ -24,3 +24,6 @@ Quarkus Flow According To PlayList:
 22- Microprofile Metrices Like which one is taking more load (quarkus-application -Health)
 23- Authentication and Authorization using JWT (quarkus-application - JWT)
 24- Authentication and Authorization using Keyklock (quarkus-application - Keyklock)
+25- Using Lombook in Application (General Only, Add dependency and Use it)
+26- How to test Secured APIs (testing-with-rest-assured)
+

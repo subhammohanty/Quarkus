@@ -146,3 +146,19 @@ To implement Keycloak:
 -> Select Bearer Token then paste the token and try to access the URL. It will work
 
 
+To implement Lombok in Application:
+------------------------------------
+-> Do not apply @Data in any Entity class , Apply it on DTO Class only.
+-> Add Lombok dependency in pom.xml
+-> We can now use @Getter/@Setter/ and many more
+
+
+To Test Secured API:
+-------------------------
+-> Suppose we have JWT Implemented and we have @RolesAllowed in every end point
+-> Add quarkus-test-security in pom to bypass authorization.
+-> We can bypass by 2 ways:
+	-> By annotating @TestSecurity(authorizationEnabled = false) at method level in test class
+	-> By annotating @TestSecurity(user = "testUser", roles = "teacher") defining roles for that method.
+	
+

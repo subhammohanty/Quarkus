@@ -1,42 +1,20 @@
 package com.hprtech.resource;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+//@Getter
+//@Setter
+//@AllArgsConstructor
+//@NoArgsConstructor
+@Data
 public class Mobile {
 
     private int id;
     private String name;
     private int ram;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getRam() {
-        return ram;
-    }
-
-    public void setRam(int ram) {
-        this.ram = ram;
-    }
-
-    public int getExternalStorage() {
-        return externalStorage;
-    }
-
-    public void setExternalStorage(int externalStorage) {
-        this.externalStorage = externalStorage;
-    }
-
-    private int externalStorage;
 }

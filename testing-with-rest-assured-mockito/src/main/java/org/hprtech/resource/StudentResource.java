@@ -1,5 +1,6 @@
 package org.hprtech.resource;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
@@ -23,6 +24,7 @@ public class StudentResource {
 
     @GET
     @Path("getAllStudent")
+    @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getStudentList(){
         List<Student> studentList = studentRepository.listAll();
@@ -31,6 +33,7 @@ public class StudentResource {
 
     @GET
     @Path("getAllCSEStudent")
+    @RolesAllowed({"admin", "teacher"})
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCSEStudents(){
         List<Student> studentList = studentRepository.listAll();
@@ -44,6 +47,7 @@ public class StudentResource {
     @Path("saveStudent")
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
+    @RolesAllowed({"admin", "teacher"})
     @Produces(MediaType.APPLICATION_JSON)
     public Response saveStudent(@RequestBody Student student){
         studentRepository.persist(student);
@@ -55,6 +59,7 @@ public class StudentResource {
 
     @GET
     @Path("student/{id}")
+    @RolesAllowed({"admin", "teacher", "Student"})
     @Produces(MediaType.APPLICATION_JSON)
     public Response getStudentById(@PathParam("id") Long id){
         Optional<Student> studentByIdOptional = studentRepository.findByIdOptional(id);

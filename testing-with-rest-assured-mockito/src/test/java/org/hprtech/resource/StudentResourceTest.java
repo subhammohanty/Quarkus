@@ -2,6 +2,7 @@ package org.hprtech.resource;
 
 import io.quarkus.test.InjectMock;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.security.TestSecurity;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.core.Response;
 import org.hprtech.entity.Student;
@@ -36,6 +37,7 @@ class StudentResourceTest {
     }
 
     @Test
+    @TestSecurity(authorizationEnabled = false)
     void getStudentList() {
         List<Student> studentList = Arrays.asList(new Student(1L, "Amit", "CSE"),
                 new Student(2L, "Prakash", "ME"),
@@ -55,6 +57,7 @@ class StudentResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "testUser", roles = "teacher")
     void saveStudent() {
         Mockito.doNothing().when(studentRepository).persist(Mockito.any(Student.class));
         Mockito.when(studentRepository.isPersistent(Mockito.any(Student.class))).thenReturn(true);
@@ -65,6 +68,7 @@ class StudentResourceTest {
     }
 
     @Test
+    @TestSecurity(authorizationEnabled = false)
     void getStudentById() {
         Student student1 = new Student(3L, "Subham", "CSE");
         Mockito.when(studentRepository.findByIdOptional(Mockito.anyLong())).thenReturn(Optional.of(student1));
@@ -77,6 +81,7 @@ class StudentResourceTest {
     }
 
     @Test
+    @TestSecurity(authorizationEnabled = false)
     void getStudentByIdForNoContent() {
         Student student1 = new Student(3L, "Subham", "CSE");
         Mockito.when(studentRepository.findByIdOptional(Mockito.anyLong())).thenReturn(Optional.empty());
