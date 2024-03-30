@@ -26,4 +26,4 @@ Quarkus Flow According To PlayList:
 24- Authentication and Authorization using Keyklock (quarkus-application - Keyklock)
 25- Using Lombook in Application (General Only, Add dependency and Use it)
 26- How to test Secured APIs (testing-with-rest-assured)
-
+27- Convert Entity To DTO and Vice-a-versa (quarkus-with-mapstruct)

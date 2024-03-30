@@ -161,4 +161,16 @@ To Test Secured API:
 	-> By annotating @TestSecurity(authorizationEnabled = false) at method level in test class
 	-> By annotating @TestSecurity(user = "testUser", roles = "teacher") defining roles for that method.
 	
+	
+Convert Entity To DTO and Vice-a versa:
+-----------------------------------------
+-> Anything we modify to the DB object fetched, then it will reflect in DB as well, without saving it also. If we annonate with @Transactional
+-> Add mapStruct and mapStructProcessor dependency in pom.xml
+-> Create an Interface for mapping
+-> Annotate this class with @Mapper with (componentModel = "cdi")
+-> Use @Mapping for mentioning target attribute for the class and use expression to give the expression
+-> Use a method merge to merge where both source and target are same.
+
+
+	
 
