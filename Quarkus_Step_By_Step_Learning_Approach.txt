@@ -27,3 +27,4 @@ Quarkus Flow According To PlayList:
 25- Using Lombook in Application (General Only, Add dependency and Use it)
 26- How to test Secured APIs (testing-with-rest-assured)
 27- Convert Entity To DTO and Vice-a-versa (quarkus-with-mapstruct)
+28- Schedule Cron Job or How to Schedule Periodic Task In Quarkus.(quarkus-with-mapstruct In Resorce Folder CronJobResource)

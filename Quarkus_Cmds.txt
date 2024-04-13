@@ -171,6 +171,19 @@ Convert Entity To DTO and Vice-a versa:
 -> Use @Mapping for mentioning target attribute for the class and use expression to give the expression
 -> Use a method merge to merge where both source and target are same.
 
+CRON Job In Quarkus:
+----------------------------
+-> Add Quarkus-scheduler dependency in your pom.xml
+-> Annotate the method with @Scheduled(every = "10s"), every define the property to run in every 10 sec
+-> Annotate with @Scheduled(cron = "0 55 12 * * ?")
+0-> 0 sec
+55 -> minute
+12 -> hour (This accepts 12 hour format)
+* -> Every Day (which day)
+* -> Every Month (which month)
+? > Day of the week (for now optional)
+
+
 
 	
 
